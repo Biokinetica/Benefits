@@ -1,0 +1,30 @@
+
+
+.login-form {
+  min-width: 150px;
+  max-width: 400px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.login-full-width {
+  align-items: center;
+  width: 100%;
+}
+.main-div{
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 
+.login-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.login-full-width {
+  width: 100%;
+} */

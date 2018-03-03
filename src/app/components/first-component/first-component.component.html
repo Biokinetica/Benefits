@@ -1,0 +1,12 @@
+<h1>
+  first-component works!
+</h1>
+<h2>Structual Directives</h2>
+<h3 *ngIf="show">This will be shown</h3>
+<h3 *ngIf="noShow">This won't</h3>
+
+<h2>Number: {{myNumber}}</h2>
+<h1 *ngIf="myNumber > 9000">succeded</h1>
+<input type="number" [(ngModel)]="myNumber">
+
+<app-author-component *ngFor="let author of authors" [name]="author"></app-author-component>

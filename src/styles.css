@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import'~@angular/material/prebuilt-themes/deeppurple-amber.css';
+.author-box {
+    box-shadow: 10px 10px 50px 5px darkgray;
+    width: 150px;
+    height: 60px;
+    text-align: center;
+    color: black;
+    font-family: Verdana;
+    font-size: 30px;
+    float: left;
+}

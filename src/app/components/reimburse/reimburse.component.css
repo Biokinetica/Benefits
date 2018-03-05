@@ -1,0 +1,25 @@
+ .reimburse-form {
+  min-width: 150px;
+  max-width: 500px;
+  justify-content: center;
+  /* align-items: center; */
+  width: 100%;
+}
+
+.reimburse-form-full {
+  
+  align-items: center;
+  width: 100%;
+}
+.reimburse-form-half {
+  align-self: center;
+  justify-content: space-between;
+  width: 30%;
+  
+}
+.main-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 

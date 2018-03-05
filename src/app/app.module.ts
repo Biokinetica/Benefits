@@ -4,7 +4,11 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
-  MatRippleModule
+  MatRippleModule,
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,13 +18,20 @@ import { AuthorComponentComponent } from './components/author-component/author-c
 import {FormsModule} from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './components/login/login.service';
+import { ReimburseComponent } from './components/reimburse/reimburse.component';
+import { ReimburseService } from './components/reimburse/reimburse.service';
+import { CookieService } from 'ngx-cookie-service';
+import { Routes, RouterModule, Router } from '@angular/router';
+ import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     FirstComponentComponent,
     AuthorComponentComponent,
-    LoginComponent
+    LoginComponent,
+    ReimburseComponent
   ],
   imports: [
     BrowserModule,
@@ -30,15 +41,22 @@ import { LoginService } from './components/login/login.service';
     MatFormFieldModule,
     NoopAnimationsModule,
     MatInputModule,
-    MatRippleModule
+    MatRippleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+   AppRoutingModule,
   ],
   exports: [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatRippleModule
+    MatRippleModule,
   ],
-  providers: [LoginService],
+  providers: [LoginService,
+  ReimburseService,
+  CookieService,
+ // Router
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

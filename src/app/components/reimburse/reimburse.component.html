@@ -1,0 +1,25 @@
+<div class="main-div">
+    <form form="ngForm" id="reimburse-form" class="reimburse-form" >
+  <mat-form-field class="reimburse-form-full">
+    <input matInput type="number" placeholder="Reimbursement Amount" name="reimb" [(ngModel)]="reimb">
+  </mat-form-field>
+
+  <mat-form-field class="reimburse-form-full" >
+    <input matInput type="text" placeholder="Description" name="desc" [(ngModel)]="desc">
+  </mat-form-field>
+  <mat-form-field class="reimburse-form-half" >
+      <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="startdate" placeholder="Enter start date" 
+      name="start" [(ngModel)]="start">
+      <mat-datepicker-toggle matSuffix [for]="startdate"></mat-datepicker-toggle>
+      <mat-datepicker #startdate></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="reimburse-form-half" >
+    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="enddate" placeholder="Enter end date" 
+      name="end" [(ngModel)]="end">
+      <mat-datepicker-toggle matSuffix [for]="enddate"></mat-datepicker-toggle>
+      <mat-datepicker #enddate></mat-datepicker>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" (click)="add()" >Submit</button>
+  </form>
+</div>

@@ -1,0 +1,45 @@
+<div class="reimbursement-view">
+  <mat-table color="accent" #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container class="column" matColumnDef="reimburse_amt">
+      <mat-header-cell *matHeaderCellDef> Reimbursment Request </mat-header-cell>
+      <mat-cell *matCellDef="let reimbursement"> {{reimbursement.reimburse_amt}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container class="column" matColumnDef="approval">
+      <mat-header-cell *matHeaderCellDef> Approval </mat-header-cell>
+      <mat-cell *matCellDef="let reimbursement"> {{reimbursement.approval}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container class="column" matColumnDef="class_start">
+      <mat-header-cell *matHeaderCellDef> Class Start </mat-header-cell>
+      <mat-cell *matCellDef="let reimbursement"> {{reimbursement.class_start | date:'mediumDate'}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container class="column" matColumnDef="class_end">
+      <mat-header-cell *matHeaderCellDef> Class End </mat-header-cell>
+      <mat-cell *matCellDef="let reimbursement"> {{reimbursement.class_end | date:'mediumDate' }} </mat-cell>
+    </ng-container>
+
+    <ng-container class="column" matColumnDef="desc">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let reimbursement"> {{reimbursement.desc}} </mat-cell>
+    </ng-container>
+
+    <ng-container class="column" matColumnDef="dated">
+      <mat-header-cell *matHeaderCellDef> Last Acted On </mat-header-cell>
+      <mat-cell *matCellDef="let reimbursement"> {{reimbursement.dated}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <button mat-raised-button color="primary" (click)="addReimbursementButton()">Add Reimbursment Request</button>
+</div>

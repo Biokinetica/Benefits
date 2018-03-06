@@ -8,7 +8,8 @@ import {
   DateAdapter,
   MAT_DATE_FORMATS,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatTableModule
 } from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,7 +24,9 @@ import { ReimburseService } from './components/reimburse/reimburse.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Routes, RouterModule, Router } from '@angular/router';
  import { AppRoutingModule } from './app-routing.module';
-
+import { ViewComponent } from './components/view/view.component';
+import { AuthHttp, AuthConfig, AuthModule } from 'angular2-jwt';
+import { ViewService } from './components/view/view.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { Routes, RouterModule, Router } from '@angular/router';
     FirstComponentComponent,
     AuthorComponentComponent,
     LoginComponent,
-    ReimburseComponent
+    ReimburseComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,8 @@ import { Routes, RouterModule, Router } from '@angular/router';
     MatDatepickerModule,
     MatNativeDateModule,
    AppRoutingModule,
+   AuthModule,
+   MatTableModule
   ],
   exports: [
     MatButtonModule,
@@ -54,8 +60,7 @@ import { Routes, RouterModule, Router } from '@angular/router';
   ],
   providers: [LoginService,
   ReimburseService,
-  CookieService,
- // Router
+  ViewService,
 ],
   bootstrap: [AppComponent]
 })

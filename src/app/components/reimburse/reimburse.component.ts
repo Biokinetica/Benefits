@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ReimburseService } from './reimburse.service';
 import { MatDatepicker } from '@angular/material';
-import { CookieService } from 'ngx-cookie-service';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 @Component({
   selector: 'app-reimburse',
@@ -9,7 +8,7 @@ import { HttpHeaders, HttpResponse } from '@angular/common/http';
   styleUrls: ['./reimburse.component.css']
 })
 export class ReimburseComponent implements OnInit {
-  email: string;
+  token: string;
   desc: string;
   start: Date;
   end: Date;
@@ -18,20 +17,18 @@ export class ReimburseComponent implements OnInit {
   training_id: Number;
   cookie: string;
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
-  constructor(private reimbursement: ReimburseService, private cookieService: CookieService) {
+  constructor(private reimbursement: ReimburseService) {
 
   }
 
   ngOnInit() {
+    this.token = JSON.parse(localStorage.getItem('currentUser'));
   }
   add(event) {
-
-  console.log(this.cookie);
-    this.email = this.cookie;
     this.training_id = 1;
     this.address_id = 1;
     const jsonObject = JSON.stringify({
-      email: this.email,
+      token: this.token,
       desc: this.desc,
       class_start: this.start,
       class_end: this.end,

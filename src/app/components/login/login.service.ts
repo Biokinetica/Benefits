@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Http, Headers, Response } from '@angular/http';
 
 @Injectable()
 export class LoginService {
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+   }
   Url = 'https://benefits-app.herokuapp.com/user';
 
 login(jsonObject) {
-  return this.http.post<User>(this.Url, jsonObject).subscribe(
+  return this.http.post<Token>(this.Url, jsonObject).subscribe(
     res => {
-      console.log(res);
+      localStorage.setItem('currentUser', JSON.stringify(res));
+     // console.log(res);
+      this.router.navigateByUrl('/view');
 
     },
     err => {
@@ -18,6 +22,10 @@ login(jsonObject) {
     }
   );
 }
+}
+
+export interface Token {
+  auth: string;
 }
 
 export interface User {

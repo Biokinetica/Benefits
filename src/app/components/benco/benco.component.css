@@ -1,0 +1,23 @@
+.mat-table {
+    overflow: auto;
+    max-height: 700px;
+    align-self: stretch;
+  }
+
+.reimbursement-view{
+
+    display: flex;
+  flex-direction: column;
+  min-width: 200px;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+  .mat-header-cell.mat-sort-header-sorted {
+    color: ThemePalette;
+  }
+  
+.mat-column-select {
+    overflow: visible;
+    
+  }

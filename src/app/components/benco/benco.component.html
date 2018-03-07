@@ -3,14 +3,24 @@
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- reimbursement Column -->
-    
-    
+          <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+              </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null"
+                            [checked]="selection.isSelected(row)">
+              </mat-checkbox>
+            </mat-cell>
+          </ng-container>
+    <!-- Position Column -->
     <ng-container class="column" matColumnDef="reimburse_amt">
       <mat-header-cell *matHeaderCellDef> Reimbursment Request </mat-header-cell>
       <mat-cell *matCellDef="let reimbursement"> {{reimbursement.reimburse_amt}} </mat-cell>
-      
     </ng-container>
 
     <!-- Name Column -->
@@ -42,7 +52,7 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></mat-row>
   </mat-table>
   <button mat-raised-button color="primary" (click)="addReimbursementButton()">Add Reimbursment Request</button>
 </div>

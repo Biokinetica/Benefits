@@ -9,7 +9,8 @@ import {
   MAT_DATE_FORMATS,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatTableModule
+  MatTableModule,
+  MatCheckboxModule
 } from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,6 +28,7 @@ import { Routes, RouterModule, Router } from '@angular/router';
 import { ViewComponent } from './components/view/view.component';
 import { AuthHttp, AuthConfig, AuthModule } from 'angular2-jwt';
 import { ViewService } from './components/view/view.service';
+import { BencoComponent } from './components/benco/benco.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { ViewService } from './components/view/view.service';
     AuthorComponentComponent,
     LoginComponent,
     ReimburseComponent,
-    ViewComponent
+    ViewComponent,
+    BencoComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { ViewService } from './components/view/view.service';
     MatNativeDateModule,
    AppRoutingModule,
    AuthModule,
-   MatTableModule
+   MatTableModule,
+   MatCheckboxModule
   ],
   exports: [
     MatButtonModule,

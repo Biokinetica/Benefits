@@ -13,8 +13,11 @@ login(jsonObject) {
   return this.http.post<Token>(this.Url, jsonObject).subscribe(
     res => {
       localStorage.setItem('currentUser', JSON.stringify(res));
-     // console.log(res);
+      if (res.admin) {
+      this.router.navigateByUrl('/benco');
+      } else {
       this.router.navigateByUrl('/view');
+      }
 
     },
     err => {
@@ -26,6 +29,7 @@ login(jsonObject) {
 
 export interface Token {
   auth: string;
+  admin: boolean;
 }
 
 export interface User {

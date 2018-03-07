@@ -12,9 +12,9 @@
   width: 100%;
 }
 .reimburse-form-half {
-  align-self: center;
+  align-self: stretch;
   justify-content: space-between;
-  width: 30%;
+  width: 32%;
   
 }
 .main-div{

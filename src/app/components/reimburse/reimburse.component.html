@@ -19,6 +19,13 @@
       <mat-datepicker-toggle matSuffix [for]="enddate"></mat-datepicker-toggle>
       <mat-datepicker #enddate></mat-datepicker>
     </mat-form-field>
+    <mat-form-field class="reimburse-form-half">
+      <mat-select placeholder="Type of Training">
+        <mat-option *ngFor="let type of types" name="training_id" [(value)]="type.value">
+          {{ type.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <br>
     <button mat-raised-button color="primary" (click)="add()" >Submit</button>
   </form>

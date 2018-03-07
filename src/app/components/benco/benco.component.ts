@@ -3,6 +3,10 @@ import { ViewService } from '../view/view.service';
 import { Router } from '@angular/router';
 import { Reimbursement } from '../reimburse/reimburse.service';
 import { SelectionModel } from '@angular/cdk/collections';
+import { BencoService } from './benco.service';
+import { Injectable } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
+
 
 @Component({
   selector: 'app-benco',
@@ -11,19 +15,23 @@ import { SelectionModel } from '@angular/cdk/collections';
 })
 export class BencoComponent implements OnInit {
   displayedColumns = ['select', 'reimburse_amt', 'approval', 'class_start', 'class_end', 'desc', 'dated'];
-  dataSource: Array<Reimbursement>;
+  dataSource = new MatTableDataSource<Reimbursement>();
   selection = new SelectionModel<Reimbursement>(true, []);
-  constructor(private reimburseList: ViewService, private router: Router) { }
+  constructor(private reimburseList: ViewService, private router: Router, private approve: BencoService) { }
 
   ngOnInit() {
     this.viewEmployeeClaims();
   }
 
+  approveClaims() {
+      this.approve.approveClaimService(this.selection, this.dataSource.data);
+  }
+
   viewEmployeeClaims() {
-    this.reimburseList.viewReimburseService().subscribe(
+    this.reimburseList.viewAllService().subscribe(
       res => {
        // console.log(res);
-        this.dataSource = res;
+        this.dataSource.data = res;
       },
       err => {
         console.log('Error occured');
@@ -31,7 +39,7 @@ export class BencoComponent implements OnInit {
   }
   isAllSelected() {
     const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.length;
+    const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
 
@@ -39,7 +47,7 @@ export class BencoComponent implements OnInit {
   masterToggle() {
     this.isAllSelected() ?
         this.selection.clear() :
-        this.dataSource.forEach(row => this.selection.select(row));
+        this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
 }

@@ -10,7 +10,9 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatTableModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatOptionModule,
+  MatSelectModule
 } from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,6 +31,8 @@ import { ViewComponent } from './components/view/view.component';
 import { AuthHttp, AuthConfig, AuthModule } from 'angular2-jwt';
 import { ViewService } from './components/view/view.service';
 import { BencoComponent } from './components/benco/benco.component';
+import { HttpModule } from '@angular/http';
+import { BencoService } from './components/benco/benco.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +58,9 @@ import { BencoComponent } from './components/benco/benco.component';
    AppRoutingModule,
    AuthModule,
    MatTableModule,
-   MatCheckboxModule
+   MatCheckboxModule,
+   MatOptionModule,
+   MatSelectModule
   ],
   exports: [
     MatButtonModule,
@@ -65,6 +71,7 @@ import { BencoComponent } from './components/benco/benco.component';
   providers: [LoginService,
   ReimburseService,
   ViewService,
+  BencoService
 ],
   bootstrap: [AppComponent]
 })

@@ -15,7 +15,15 @@ export class ReimburseComponent implements OnInit {
   address_id: Number;
   reimb: Number;
   training_id: Number;
-  cookie: string;
+  dated: Date;
+  types = [
+    {value: '1', viewValue: 'Certification'},
+    {value: '2', viewValue: 'University Course'},
+    {value: '3', viewValue: 'Seminar'},
+    {value: '4', viewValue: 'Certification Prep Course'},
+    {value: '5', viewValue: 'Technical Training'},
+    {value: '6', viewValue: 'Other'}
+  ];
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
   constructor(private reimbursement: ReimburseService) {
 
@@ -25,7 +33,6 @@ export class ReimburseComponent implements OnInit {
     this.token = JSON.parse(localStorage.getItem('currentUser'));
   }
   add(event) {
-    this.training_id = 1;
     this.address_id = 1;
     const jsonObject = JSON.stringify({
       token: this.token,
@@ -34,7 +41,8 @@ export class ReimburseComponent implements OnInit {
       class_end: this.end,
       address_id: this.address_id,
       reimburse_amt: this.reimb,
-      training_id: this.training_id
+      training_id: this.training_id,
+      dated: this.dated
     });
 
 this.reimbursement.addReimbursement(jsonObject);

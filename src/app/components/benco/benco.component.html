@@ -54,5 +54,5 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></mat-row>
   </mat-table>
-  <button mat-raised-button color="primary" (click)="addReimbursementButton()">Add Reimbursment Request</button>
+  <button mat-raised-button color="primary" (click)="approveClaims()">Approve Requests</button>
 </div>

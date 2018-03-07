@@ -26,7 +26,7 @@ addReimbursement(jsonObject) {
 }
 
 export interface Reimbursement {
-    token: string;
+    token: object;
     desc: string;
     class_start: Date;
     class_end: Date;
@@ -35,4 +35,5 @@ export interface Reimbursement {
   training_id: Number;
   approval: string;
   dated: Date;
+  reimburse_id: Number;
 }

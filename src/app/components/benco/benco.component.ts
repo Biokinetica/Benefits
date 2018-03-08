@@ -6,7 +6,8 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { BencoService } from './benco.service';
 import { Injectable } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
-
+import { LoginService } from '../login/login.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-benco',
@@ -14,17 +15,26 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./benco.component.css']
 })
 export class BencoComponent implements OnInit {
-  displayedColumns = ['select', 'reimburse_amt', 'approval', 'class_start', 'class_end', 'desc', 'dated'];
+  displayedColumns = ['select', 'email', 'reimburse_amt', 'approval', 'class_start', 'class_end', 'desc', 'dated'];
   dataSource = new MatTableDataSource<Reimbursement>();
   selection = new SelectionModel<Reimbursement>(true, []);
-  constructor(private reimburseList: ViewService, private router: Router, private approve: BencoService) { }
+  constructor(private snackBar: MatSnackBar,
+     private reimburseList: ViewService,
+     private router: Router, private approve: BencoService, private logout: LoginService) { }
 
   ngOnInit() {
     this.viewEmployeeClaims();
   }
-
+  openSnackBar() {
+    this.snackBar.open('Successfully Logged Out', 'Undo', {
+      duration: 2000
+    });
+  }
   approveClaims() {
       this.approve.approveClaimService(this.selection, this.dataSource.data);
+  }
+  denyClaims() {
+    this.approve.denyClaimsService(this.selection, this.dataSource.data);
   }
 
   viewEmployeeClaims() {
@@ -49,5 +59,9 @@ export class BencoComponent implements OnInit {
         this.selection.clear() :
         this.dataSource.data.forEach(row => this.selection.select(row));
   }
+
+  signOut() {
+    this.logout.logout();
+   }
 
 }

@@ -25,6 +25,11 @@ login(jsonObject) {
     }
   );
 }
+
+logout() {
+  localStorage.removeItem('currentUser');
+  this.router.navigateByUrl('');
+}
 }
 
 export interface Token {

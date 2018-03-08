@@ -10,14 +10,15 @@ export class ViewService {
   admin = 'https://benefits-app.herokuapp.com/adminpanel';
   token: string;
   dataSource: Array<Reimbursement>;
-  jwtHelper: JwtHelper = new JwtHelper();
 viewReimburseService() {
   const currentUser: string = JSON.parse(localStorage.getItem('currentUser'));
   console.log(currentUser);
   return this.http.post<Array<Reimbursement>>(this.Url, currentUser);
 }
 viewAllService() {
-  const currentUser: string = JSON.parse(localStorage.getItem('currentUser'));
+
+  // const header = new HttpHeaders({ 'Content-Type': 'application/json' })
+  //     .set('authorization', JSON.stringify(localStorage.getItem('currentUser')));
 return this.http.get<Array<Reimbursement>>(this.admin);
 }
 }

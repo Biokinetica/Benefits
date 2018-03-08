@@ -18,6 +18,11 @@
             </mat-cell>
           </ng-container>
     <!-- Position Column -->
+    <ng-container class="column" matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let reimbursement"> {{reimbursement.email}} </mat-cell>
+    </ng-container>
+
     <ng-container class="column" matColumnDef="reimburse_amt">
       <mat-header-cell *matHeaderCellDef> Reimbursment Request </mat-header-cell>
       <mat-cell *matCellDef="let reimbursement"> {{reimbursement.reimburse_amt}} </mat-cell>
@@ -54,5 +59,9 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></mat-row>
   </mat-table>
+  <form>
   <button mat-raised-button color="primary" (click)="approveClaims()">Approve Requests</button>
+  <button mat-raised-button color="primary" (click)="denyClaims()">Deny Requests</button>
+  <button mat-raised-button color="warn" (click)="signOut(); openSnackBar();">Logout</button>
+</form>
 </div>

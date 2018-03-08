@@ -12,13 +12,12 @@ import {
   MatTableModule,
   MatCheckboxModule,
   MatOptionModule,
-  MatSelectModule
+  MatSelectModule,
+  MatSnackBarModule
 } from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { FirstComponentComponent } from './components/first-component/first-component.component';
-import { AuthorComponentComponent } from './components/author-component/author-component.component';
 import {FormsModule} from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './components/login/login.service';
@@ -33,12 +32,11 @@ import { ViewService } from './components/view/view.service';
 import { BencoComponent } from './components/benco/benco.component';
 import { HttpModule } from '@angular/http';
 import { BencoService } from './components/benco/benco.service';
+import {MatSnackBar} from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FirstComponentComponent,
-    AuthorComponentComponent,
     LoginComponent,
     ReimburseComponent,
     ViewComponent,
@@ -60,7 +58,8 @@ import { BencoService } from './components/benco/benco.service';
    MatTableModule,
    MatCheckboxModule,
    MatOptionModule,
-   MatSelectModule
+   MatSelectModule,
+   MatSnackBarModule
   ],
   exports: [
     MatButtonModule,

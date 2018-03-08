@@ -12,8 +12,8 @@ export class ReimburseService {
 addReimbursement(jsonObject) {
   const currentUser: string = JSON.parse(localStorage.getItem('currentUser'));
   const headers = new HttpHeaders({'auth' : currentUser});
-  console.log(currentUser);
-  return this.http.post<Reimbursement>(this.Url, jsonObject, {headers: headers}).subscribe(
+  console.log(currentUser, headers);
+  return this.http.post<Reimbursement>(this.Url, jsonObject).subscribe(
     res => {
       console.log(res);
       this.router.navigateByUrl('/view');
@@ -36,4 +36,5 @@ export interface Reimbursement {
   approval: string;
   dated: Date;
   reimburse_id: Number;
+  email: string;
 }

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Reimbursement, ReimburseService } from '../reimburse/reimburse.service';
 import { ViewService } from './view.service';
 import { Router } from '@angular/router';
+import { LoginService } from '../login/login.service';
+import { MatSnackBar } from '@angular/material';
+import { Action } from 'rxjs/scheduler/Action';
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
@@ -10,11 +13,17 @@ import { Router } from '@angular/router';
 export class ViewComponent implements OnInit {
   displayedColumns = ['reimburse_amt', 'approval', 'class_start', 'class_end', 'desc', 'dated'];
   dataSource: Array<Reimbursement>;
-  constructor(private reimburseList: ViewService, private router: Router) { }
+  constructor(private snackBar: MatSnackBar, private reimburseList: ViewService, private router: Router, private logout: LoginService) { }
 
   ngOnInit() {
     this.viewReimbursements();
   }
+  openSnackBar() {
+    this.snackBar.open('Successfully Logged Out', 'Undo', {
+      duration: 2000
+    });
+  }
+
   viewReimbursements() {
     this.reimburseList.viewReimburseService().subscribe(
       res => {
@@ -27,6 +36,9 @@ export class ViewComponent implements OnInit {
   }
   addReimbursementButton() {
     this.router.navigateByUrl('/reimburse');
+  }
+  signOut() {
+    this.logout.logout();
   }
 
 }

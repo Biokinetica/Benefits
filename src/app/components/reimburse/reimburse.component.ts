@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ReimburseService } from './reimburse.service';
-import { MatDatepicker } from '@angular/material';
+import { MatDatepicker, MatSnackBar } from '@angular/material';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
+import { LoginService } from '../login/login.service';
 @Component({
   selector: 'app-reimburse',
   templateUrl: './reimburse.component.html',
@@ -25,12 +26,17 @@ export class ReimburseComponent implements OnInit {
     {value: 6, viewValue: 'Other'}
   ];
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
-  constructor(private reimbursement: ReimburseService) {
+  constructor(private snackBar: MatSnackBar, private reimbursement: ReimburseService, private logout: LoginService) {
 
   }
 
   ngOnInit() {
     this.token = JSON.parse(localStorage.getItem('currentUser'));
+  }
+  openSnackBar() {
+    this.snackBar.open('Successfully Logged Out', 'Undo', {
+      duration: 2000
+    });
   }
   add(event) {
     this.address_id = 1;
@@ -47,6 +53,10 @@ export class ReimburseComponent implements OnInit {
 
 this.reimbursement.addReimbursement(jsonObject);
 
+  }
+
+  signOut() {
+   this.logout.logout();
   }
 
 }

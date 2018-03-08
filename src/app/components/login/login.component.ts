@@ -26,4 +26,8 @@ export class LoginComponent implements OnInit {
     this.login.login(jsonObject);
     console.log(jsonObject);
   }
+
+  signOut() {
+    this.login.logout();
+  }
 }

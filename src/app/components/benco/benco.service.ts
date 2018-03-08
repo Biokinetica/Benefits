@@ -33,5 +33,26 @@ export class BencoService {
 
     }
 
+    denyClaimsService(selected, dataSource) {
+      const storage = localStorage.getItem('currentUser');
+         this.selection = selected;
+        this.data = dataSource;
+        for (let i = 0; i < this.selection.selected.length; i++) {
+            if (this.selection.isSelected) {
+            this.selection.selected[i].token = JSON.parse(storage);
+            }
+        }
+        this.http.put<Array<Reimbursement>>(this.Url, this.selection.selected).subscribe(
+          res => {
+            console.log(res);
+            this.router.navigateByUrl('/benco');
+
+          },
+          err => {
+            console.log('Error occured');
+          }
+        );
+    }
+
 
 }

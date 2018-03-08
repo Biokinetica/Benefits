@@ -38,7 +38,7 @@
 
     <ng-container class="column" matColumnDef="dated">
       <mat-header-cell *matHeaderCellDef> Last Acted On </mat-header-cell>
-      <mat-cell *matCellDef="let reimbursement"> {{reimbursement.dated}} </mat-cell>
+      <mat-cell *matCellDef="let reimbursement"> {{reimbursement.dated | date:'mediumDate' }} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

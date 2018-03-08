@@ -17,12 +17,12 @@ export class ReimburseComponent implements OnInit {
   training_id: Number;
   dated: Date;
   types = [
-    {value: '1', viewValue: 'Certification'},
-    {value: '2', viewValue: 'University Course'},
-    {value: '3', viewValue: 'Seminar'},
-    {value: '4', viewValue: 'Certification Prep Course'},
-    {value: '5', viewValue: 'Technical Training'},
-    {value: '6', viewValue: 'Other'}
+    {value: 1, viewValue: 'Certification'},
+    {value: 2, viewValue: 'University Course'},
+    {value: 3, viewValue: 'Seminar'},
+    {value: 4, viewValue: 'Certification Prep Course'},
+    {value: 5, viewValue: 'Technical Training'},
+    {value: 6, viewValue: 'Other'}
   ];
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
   constructor(private reimbursement: ReimburseService) {

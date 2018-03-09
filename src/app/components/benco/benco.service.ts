@@ -23,6 +23,7 @@ export class BencoService {
         this.http.post<Array<Reimbursement>>(this.Url, this.selection.selected).subscribe(
             res => {
               console.log(res);
+              this.router.navigated = false;
               this.router.navigateByUrl('/benco');
 
             },
@@ -45,6 +46,7 @@ export class BencoService {
         this.http.put<Array<Reimbursement>>(this.Url, this.selection.selected).subscribe(
           res => {
             console.log(res);
+            this.router.navigated = false;
             this.router.navigateByUrl('/benco');
 
           },

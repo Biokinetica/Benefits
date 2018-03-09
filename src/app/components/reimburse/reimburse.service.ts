@@ -16,7 +16,8 @@ addReimbursement(jsonObject) {
   return this.http.post<Reimbursement>(this.Url, jsonObject).subscribe(
     res => {
       console.log(res);
-      this.router.navigateByUrl('/view');
+      this.router.navigated = false;
+     this.router.navigateByUrl('/view');
     },
     err => {
       console.log('Error occured');

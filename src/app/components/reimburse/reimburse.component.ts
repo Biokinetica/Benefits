@@ -3,6 +3,7 @@ import { ReimburseService } from './reimburse.service';
 import { MatDatepicker, MatSnackBar } from '@angular/material';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { LoginService } from '../login/login.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-reimburse',
   templateUrl: './reimburse.component.html',
@@ -26,7 +27,9 @@ export class ReimburseComponent implements OnInit {
     {value: 6, viewValue: 'Other'}
   ];
   @ViewChild(MatDatepicker) datepicker: MatDatepicker<Date>;
-  constructor(private snackBar: MatSnackBar, private reimbursement: ReimburseService, private logout: LoginService) {
+  constructor(private router: Router,
+    private snackBar: MatSnackBar,
+    private reimbursement: ReimburseService, private logout: LoginService) {
 
   }
 

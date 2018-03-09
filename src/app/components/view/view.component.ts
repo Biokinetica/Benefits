@@ -35,7 +35,7 @@ export class ViewComponent implements OnInit {
       });
   }
   addReimbursementButton() {
-    this.router.navigateByUrl('/reimburse');
+   this.router.navigateByUrl('/reimburse');
   }
   signOut() {
     this.logout.logout();
